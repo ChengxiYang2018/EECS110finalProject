@@ -234,8 +234,14 @@ def main():
   # Each individual places their boats within their grid
 
   # Player makes a move
-def check_guess(current_opponent_board : list, guess):
-def autoplay()
+  while check_for_winner(p1_board) :
+    if check_for_winner(p2_board): #checks if player1 hit all player2's boats
+      return "player1 wins"
+    player_move = input("choose a coordinate or autoplay")
+    if
+      check_guess(current_opponent_board : list, guess):
+    elif player_move == "autoplay"
+      coordinate = autoplay(player_board);
 
   # Updates the grid with the player's move
 
@@ -244,6 +250,7 @@ def autoplay()
   # Reptetion of this until someone wins
 
   # Announce the winner
+  return ""player2 wins" # when the while loop ends, all ships on player1's board are hit
 def check_for_winner(board):
 
   # Play infinite amount of games until players choose to quit
