@@ -1,3 +1,5 @@
+import string
+import random
 #display the board
 def display_board(board, player):
   """Displays the input board, typically the human player."""
@@ -67,3 +69,51 @@ print("display_board() EXPECTED OUTPUT: grid should display only the hits and mi
 print("display_board() ACTUAL OUTPUT:")
 display_board(sample_grid, False)
 print()
+
+def convert_to_index(position):
+  """Converts input postion (ie. "A4") to a row and column."""
+  alphabet_idx_conversion = {"A": 0, "B": 1, "C": 2, "D":3, "E":4, "F":5, "G":6, "H":7, "I":8, "J":9, "K":10, "L":11, "M":12,
+                             "N":13, "O":14, "P":15, "Q":16, "R":17, "S":18, "T":19, "U":20, "V":21, "W":22, "X":23, "Y":24, "Z":25}
+  row = position[0]
+  col = position[1]
+
+  row = alphabet_idx_conversion[row]
+  col = int(col) - 1
+  return row, col
+  def validate_boat(board, position, horizontal, size):
+  """Validates a potential boat and orientation on the input board."""
+  row, col = convert_to_index(position)
+
+  # horizontal
+  if horizontal:
+    # check to the right
+    if board[row][col:col+size] == [" "] * size:
+      return True, "right"
+
+    # check to the left
+    if board[row][col-size+1:col+1] == [" "] * size:
+      return True, "left"
+
+    return False, None
+
+  # vertical
+  else:
+    # check above
+    potential_boat = []
+    if row - size + 1 >= 0:
+      for row in range(row - size + 1, row + 1):
+        if board[row][col] == " ":
+          potential_boat.append(" ")
+      if potential_boat == [" "] * size:
+        return True, "up"
+
+    # check below
+    potential_boat = []
+    if row + size - 1 <= 4:
+      for row in range(row, row + size):
+        if board[row][col] == " ":
+          potential_boat.append(" ")
+      if potential_boat == [" "] * size:
+        return True, "down"
+
+    return False, None
