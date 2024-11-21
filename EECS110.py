@@ -135,3 +135,30 @@ def check_guess(current_opponent_board : list, guess):
         return False
       elif current_oppnenet_board(row,col) == "X":
         return False
+
+
+
+def check_for_winner(board):
+  """TODO: replace with short description of function."""
+  # TODO: Write check_for_winner()
+
+# Checks through column
+  for col in board:
+
+    # Checks for any remaining boats within columns, return false if there is.
+    if '*' in col:
+     return False
+
+  return True
+
+
+# Checks through row
+  for row in board:
+
+     #Checks any remaining boats between rows, and returns false if it encounters one.
+    if '*' in row:
+      return False
+
+  return True
+
+
