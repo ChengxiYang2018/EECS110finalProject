@@ -225,3 +225,29 @@ def autoplay(player_board):
   # if player1 used autoplay,
 
 
+def main():
+  """TODO: replace with short description of function."""
+  # TODO: Write main()
+
+  # Announce the game, and initialize the variables
+
+  # Each individual places their boats within their grid
+
+  # Player makes a move
+def check_guess(current_opponent_board : list, guess):
+def autoplay()
+
+  # Updates the grid with the player's move
+
+  # Switches the move ability to other player
+
+  # Reptetion of this until someone wins
+
+  # Announce the winner
+def check_for_winner(board):
+
+  # Play infinite amount of games until players choose to quit
+
+
+
+  return
