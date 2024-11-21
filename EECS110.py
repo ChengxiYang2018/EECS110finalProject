@@ -142,16 +142,6 @@ def check_for_winner(board):
   """TODO: replace with short description of function."""
   # TODO: Write check_for_winner()
 
-# Checks through column
-  for col in board:
-
-    # Checks for any remaining boats within columns, return false if there is.
-    if '*' in col:
-     return False
-
-  return True
-
-
 # Checks through row
   for row in board:
 
