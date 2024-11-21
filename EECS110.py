@@ -161,4 +161,67 @@ def check_for_winner(board):
 
   return True
 
+def findMoves(player_board : list):
+  position = 0
+
+  hit_boat = [] # index of x
+  miss = [] # index of o
+  possible_index = [] # index if no x present or no position next to x available
+  #if "X" in player_board or "O" in player_board:
+  for i in player_board: # each row in player_board
+    for j in i: # each str element in each row
+      position += 1
+      if j == "X":
+          hit_boat.append (position)
+      elif j == "O":
+          miss.append(position)
+      else :
+          possible_index.append(position) # the player has not hit this position
+       # increase col index
+  print(hit_boat, miss, possible_index)
+  return hit_boat, miss, possible_index
+def possible_hits(hit_boat, miss, possible_index):
+  computer_move = []
+  if len(hit_boat) == 0 : # if no X
+      num = random.choice(possible_index)
+      print (num)
+      return num # choose a random spot that's not X or O
+  for index in hit_boat:
+    if index not in [4, 9, 14, 19, 24] : # these index do not have a point to the right
+      computer_move.append(index + 1)
+    if index not in [0, 5, 10, 15, 20] :# these index do not have a point to the left
+      computer_move.append(index - 1)
+    if index not in [0, 1,2,3, 4]: # these index do not have a point on its top
+      computer_move.append(index - 5)
+    if index not in [20,21,22,23,24]: # these index do not have a point under it
+      computer_move.append(index + 5 )
+    computer_move = list(dict.fromkeys(computer_move)) # the fromkey function remove duplicate variables in possible_index
+    for i in computer_move:
+      if i < 1 or i > 25:
+        computer_move.remove(i) # use .remove() to remove the element with value of i
+      if i in hit_boat or i in miss:
+        computer_move.remove(i)
+    if len(computer_move) == 0 : # if no possible spot next to X
+      num = random.choice(possible_index)
+      print (num)
+      return num # choose a random spot that's not X or O
+    else:
+      num = random.choice(computer_move)
+      print (num)
+      return num
+#random.choice(string.ascii_letters)
+
+def autoplay(player_board):
+  # make a board coord of the Xs and Os
+  index = ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2","C3", "C4", "C5", "D1","D2","D3","D4","D5","E1","E2","E3","E4","E5"]
+  # need to figure how to convert position to index
+  [hit_boat, miss, possible_index] = findMoves(player_board)
+  coords = possible_hits(hit_boat, miss, possible_index) - 1
+  return index[coords] # return the coordinate in standard form
+  """TODO: replace with short description of function."""
+  # the function randomly chooses a coordinate if no
+  # TODO: Write autoplay()
+  # returns a coordinate
+  # if player1 used autoplay,
+
 
